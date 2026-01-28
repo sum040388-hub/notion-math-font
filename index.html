@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+
+  <style>
+    @font-face {
+      font-family: "BMKkubulim";
+      src: url("./fonts/BMKkubulim.woff2") format("woff2");
+      font-display: swap;
+    }
+    body { margin: 0; padding: 12px; }
+    .katex .mord.text {
+      font-family: "BMKkubulim", system-ui, sans-serif;
+      letter-spacing: -0.01em;
+    }
+  </style>
+</head>
+<body>
+  <div id="eq"></div>
+
+   <script>
+  function getParam(name, fallback) {
+    const v = new URLSearchParams(location.search).get(name);
+    return v ?? fallback;
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const text  = getParam("text", "FRIDAY");
+    const color = getParam("color", "#000000");
+
+    katex.render(
+      String.raw`\color{${color}}{\text{${text}}}`,
+      document.getElementById("eq"),
+      { displayMode: true, throwOnError: false }
+    );
+  });
+</script>
+
+</body>
+</html>
