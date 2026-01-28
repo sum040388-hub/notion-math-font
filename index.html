@@ -9,17 +9,34 @@
 
   <style>
     @font-face {
-      font-family: "BMKkubulim";
-      src: url("./fonts/BMKkubulim.woff2") format("woff2");
-      font-display: swap;
-    }
-    body {
-  margin: 0;
-  padding: 22px 20px;
+  font-family: "BMKkubulim";
+  src: url("./fonts/BMKkubulim.woff2") format("woff2");
+  font-display: swap;
 }
 
+/* iframe 기본 높이 문제 대응 */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  box-sizing: border-box;
+
+  /* 🔥 핵심 */
+  min-height: 96px;          /* 노션 제목 카드 높이와 유사 */
+  padding: 22px 20px;        /* 위·아래 동일 여백 */
+  
+  display: block;            /* ❗ 중앙정렬 금지 */
+}
+
+#eq {
+  margin: 0;
+}
+
+/* KaTeX 여백/라인 정리 */
 .katex {
-  display: block;
   margin: 0;
   padding: 0;
   line-height: 1;
@@ -30,10 +47,12 @@
   margin: 0;
 }
 
+/* 텍스트만 커스텀 폰트 */
 .katex .mord.text {
   font-family: "BMKkubulim", system-ui, sans-serif;
   letter-spacing: -0.01em;
 }
+
 
   </style>
 </head>
@@ -55,6 +74,7 @@
   document.getElementById("eq"),
   { displayMode: false, throwOnError: false }
 );
+
 
   });
 </script>
