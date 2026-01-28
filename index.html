@@ -34,10 +34,11 @@
     const color = getParam("color", "#000000");
 
     katex.render(
-      String.raw`\color{${color}}{\text{${text}}}`,
-      document.getElementById("eq"),
-      { displayMode: true, throwOnError: false }
-    );
+  String.raw`\color{${color}}{\text{${text}}}`,
+  document.getElementById("eq"),
+  { displayMode: false, throwOnError: false }
+);
+
   });
 </script>
 
