@@ -2,27 +2,39 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
   <style>
-    body { padding: 20px; background: #f5f5f5; }
+    @font-face {
+      font-family: "BMKkubulim";
+      src: url("./fonts/BMKkubulim.woff2") format("woff2"); /* 파일명 정확히 */
+      font-display: swap;
+    }
+
+    body { margin: 0; padding: 12px; }
+
+    /* \text{...} 부분만 폰트 적용 */
+    .katex .mord.text {
+      font-family: "BMKkubulim", system-ui, sans-serif;
+      letter-spacing: -0.01em;
+    }
   </style>
 </head>
 <body>
-
   <div id="eq"></div>
 
   <script>
-    katex.render(
-      "L = x^2",
-      document.getElementById("eq"),
-      { displayMode: true }
-    );
+    window.addEventListener("DOMContentLoaded", () => {
+      katex.render(
+        String.raw`L = \text{손실 함수}(x, y)`,
+        document.getElementById("eq"),
+        { displayMode: true, throwOnError: false }
+      );
+    });
   </script>
-
 </body>
 </html>
